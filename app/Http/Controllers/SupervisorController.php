@@ -64,7 +64,7 @@ class SupervisorController extends Controller
             'password.max' => 'La contraseña no puede tener más de 72 caracteres.',
             'password.confirmed' => 'La confirmación de la contraseña no coincide.',
 
-            // mensajes para "correo_electronico"
+            // mensajes para "email"
             'email.required' => 'El correo electrónico es obligatorio.',
             'email.email' => 'El correo electrónico debe ser una dirección válida (formato RFC).',
             'email.min' => 'El correo electrónico debe tener al menos 5 caracteres.',

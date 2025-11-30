@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Ruta para pruebas de portal
+|--------------------------------------------------------------------------
+*/
+# Ruta de acceso de usuario #
+Route::get('/portal', 'PortalController@accesoPortal')->name('accesoPortal');
+Route::post('/portal', 'PortalController@accesoPortalPost')->name('accesoPortalPost');
+Route::get('/portal/inicio', 'PortalController@inicioPortal')->name('inicioPortal');
+
 # Rutas básicas de Auth #
 require __DIR__.'/auth.php';
 

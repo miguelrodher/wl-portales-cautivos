@@ -46,7 +46,7 @@
                                 <div id="collapseAdmin" class="accordion-collapse collapse"
                                     aria-labelledby="headingAdmin" data-bs-parent="#sidebarAccordion">
                                     <div class="accordion-body p-0">
-                                        <div class="list-group list-group-flush ps-4">
+                                        <div class="list-group list-group-flush ps-5">
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Gestión de usuarios</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Roles y permisos</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Configuración</a>
@@ -67,7 +67,7 @@
                                 <div id="collapseCatalogos" class="accordion-collapse collapse"
                                     aria-labelledby="headingCatalogos" data-bs-parent="#sidebarAccordion">
                                     <div class="accordion-body p-0">
-                                        <div class="list-group list-group-flush ps-4">
+                                        <div class="list-group list-group-flush ps-5">
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Correos restringidos</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Dominios</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Teléfonos restringidos</a>
@@ -88,7 +88,7 @@
                                 <div id="collapseAnaliticas" class="accordion-collapse collapse"
                                     aria-labelledby="headingAnaliticas" data-bs-parent="#sidebarAccordion">
                                     <div class="accordion-body p-0">
-                                        <div class="list-group list-group-flush ps-4">
+                                        <div class="list-group list-group-flush ps-5">
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Visitas por día</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Tasa de conversión</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Sesiones por dispositivo</a>
