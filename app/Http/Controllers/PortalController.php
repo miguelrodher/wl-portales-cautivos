@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Usuario;
 use Carbon\Carbon;
 
+#libreria para agente de usuario
+use Jenssegers\Agent\Agent;
+
 class PortalController extends Controller
 {
     public function accesoPortal()
@@ -42,6 +45,27 @@ class PortalController extends Controller
             'telefono.regex' => 'El teléfono solo puede contener números del 0 al 9'
         ]);
 
+        // Extraer datos del user agent
+        $agente = new Agent();
+
+        $ip = $request->ip();
+
+        $dispositivo = $agente->device();
+
+        $sistema_operativo = $agente->platform();
+
+        $version_sistema_operativo = $agente->version($sistema_operativo);
+
+        $navegador = $agente->browser();
+
+        $version_navegador = $agente->version($navegador);
+
+        //$motor_navegador = $agente->engine();
+
+        $idioma = $agente->languages();
+
+        dd($ip, $dispositivo, $sistema_operativo, $version_sistema_operativo, $navegador, $version_navegador, $idioma, $agente);
+
         // Transaccion para insertar al usuario si no es su primera visita o registrarlo en caso contrario
 
         return DB::transaction(function () use ($datos_validados)
@@ -55,8 +79,6 @@ class PortalController extends Controller
                     'fecha_creacion' => Carbon::now()->format('Y-m-d')
                 ]
             );
-
-            dd($usuario);
 
             return redirect('/portal/inicio');
         });

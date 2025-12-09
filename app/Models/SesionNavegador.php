@@ -28,19 +28,18 @@ class SesionNavegador extends Model
         'portales_cautivos_id',
     ];
 
-    public function evento(): BelongsTo
+    public function evento()
     {
         return $this->belongsTo(EventoCierreSesion::class, 'eventos_cierres_sesiones_id');
     }
 
-    public function usuario(): BelongsTo
+    public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'usuarios_id');
     }
 
-    public function portal(): BelongsTo
+    public function portal()
     {
         return $this->belongsTo(PortalCautivo::class, 'portales_cautivos_id');
     }
-}
 }

@@ -27,7 +27,7 @@ class CuentaAdministrativa extends Authenticatable
         'password', 'remember_token'
     ];
 
-    public function rol(): BelongsTo
+    public function rol()
     {
         return $this->belongsTo(Rol::class, 'roles_id');
     }

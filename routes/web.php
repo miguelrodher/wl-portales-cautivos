@@ -69,8 +69,18 @@ Route::post('/wl/eliminar-restriccion-telefono/{telefonos_restricciones_id}', 'T
 |--------------------------------------------------------------------------
 */
 
-# Registro de administradores #
-Route::get('/wl/supervisor/registro-admin', 'SupervisorController@registro')->name('registro');
-Route::post('/wl/supervisor/registro-admin', 'SupervisorController@registroPost')->name('registroPost');
+# Gestión de los usuarios administradores #
+Route::get('wl/supervisor/listar-administradores', 'SupervisorController@listarAdministradores')->name('listarAdministradores');
 
+# Registro de administradores #
+Route::get('/wl/supervisor/registro-administrador', 'SupervisorController@registroAdministrador')->name('registroAdministrador');
+Route::post('/wl/supervisor/registro-administrador', 'SupervisorController@registroAdministradorPost')->name('registroAdministradorPost');
+
+# Editar y eliminar administrador #
+Route::get('/wl/supervisor/editar-administrador/{cuentas_administrativas_id}', 'SupervisorController@editarAdministrador')->name('editarAdministrador');
+Route::post('/wl/supervisor/editar-administrador/{cuentas_administrativas_id}', 'SupervisorController@editarAdministradorPost')->name('editarAdministradorPost');
+Route::post('/wl/supervisor/eliminar-administrador/{cuentas_administrativas_id}', 'SupervisorController@eliminarAdministradorPost')->name('eliminarAdministradorPost');
+
+# Cambiar el estatus del usuario #
+Route::post('/wl/supervisor/cambiar-estatus-administrador/{cuentas_administrativas_id}', 'SupervisorController@cambiarEstatusAdministradorPost')->name('cambiarEstatusAdministradorPost');
 

@@ -34,6 +34,7 @@
                         <!--Acciones supervisores-->
                         <div class="accordion flex-grow-0 border-bottom border-white" id="sidebarAccordion">
 
+                            @if(auth()->user()->roles_id === 1)
                             <!-- DATOS ADMINISTRATIVOS -->
                             <div class="accordion-item bg-dark border-0 mt-1">
                                 <h2 class="accordion-header" id="headingAdmin">
@@ -47,13 +48,15 @@
                                     aria-labelledby="headingAdmin" data-bs-parent="#sidebarAccordion">
                                     <div class="accordion-body p-0">
                                         <div class="list-group list-group-flush ps-5">
-                                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Gestión de usuarios</a>
+                                            <a href="{{ route('listarAdministradores') }}" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Gestión de usuarios</a>
+                                            <a href="{{ route('registroAdministrador') }}" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Registrar administrador</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Roles y permisos</a>
                                             <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Configuración</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endif
 
                             <!-- CATÁLOGOS -->
                             <div class="accordion-item bg-dark border-0">
@@ -101,10 +104,6 @@
 
                         <!-- Acciones administradores y supervisores -->
                         <div class="mt-3">
-                            @if(auth()->user()->roles_id === 1)
-                                <a href="{{ route('registro') }}" class="btn btn-dark w-100 mb-3 text-start">Registrar administrador</a>
-                            @endif
-
                             <a href="{{ route('listarRestricciones') }}" class="btn btn-dark w-100 mb-3 text-start">Restricciones</a>
                             <a href="#" class="btn btn-dark w-100 mb-3 text-start">Descargar métricas</a>
                         </div>

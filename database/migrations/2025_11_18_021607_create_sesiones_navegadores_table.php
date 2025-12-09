@@ -27,7 +27,7 @@ class CreateSesionesNavegadoresTable extends Migration
             $table->string('navegador', 20)->nullable();
             $table->string('version_navegador', 30)->nullable();
             $table->string('motor_navegador', 20)->nullable();
-            $table->string('idioma', 20)->nullable();
+            $table->string('idioma', 100)->nullable();
             
             $table->unsignedBigInteger('eventos_cierres_sesiones_id')->nullable();
             $table->unsignedBigInteger('usuarios_id')->nullable();
