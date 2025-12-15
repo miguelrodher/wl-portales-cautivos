@@ -26,20 +26,22 @@ class CreateSesionesNavegadoresTable extends Migration
             $table->string('version_sistema_operativo', 30)->nullable();
             $table->string('navegador', 20)->nullable();
             $table->string('version_navegador', 30)->nullable();
-            $table->string('motor_navegador', 20)->nullable();
             $table->string('idioma', 100)->nullable();
             
             $table->unsignedBigInteger('eventos_cierres_sesiones_id')->nullable();
             $table->unsignedBigInteger('usuarios_id')->nullable();
             $table->unsignedBigInteger('portales_cautivos_id')->nullable();
+            $table->unsignedBigInteger('tipos_dispositivos_id')->nullable();
 
             $table->foreign('eventos_cierres_sesiones_id')->references('id')->on('eventos_cierres_sesiones');
             $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->foreign('portales_cautivos_id')->references('id')->on('portales_cautivos');
+            $table->foreign('tipos_dispositivos_id')->references('id')->on('tipos_dispositivos');
 
             $table->index('eventos_cierres_sesiones_id');
             $table->index('usuarios_id');
             $table->index('portales_cautivos_id');
+            $table->index('tipos_dispositivos_id');
 
             $table->timestamps();
         });

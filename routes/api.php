@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/validar-datos', 'Api\PortalController@validarDatosPortal')->name('validarDatosPortal');
+Route::post('/validar-datos', 'Api\PortalController@validarDatosPortal')->name('validarDatosPortal');

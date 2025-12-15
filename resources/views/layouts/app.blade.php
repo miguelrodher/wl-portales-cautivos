@@ -13,9 +13,6 @@
     <!-- Bootstrap (global) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Styles compilados de Laravel -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
     @stack('styles')
 </head>
 <body class="font-sans antialiased bg-light">
@@ -24,7 +21,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- Barra lateral -->
-                <nav class="col-12 col-md-3 col-lg-2 bg-dark vh-100 text-white p-3">
+                <nav class="col-12 col-md-3 col-lg-2 bg-dark vh-100 sticky-top text-white p-3">
                     <div class="d-flex flex-column h-100">
 
                         <div class="mb-3 border-bottom border-white ps-3">
@@ -104,6 +101,7 @@
 
                         <!-- Acciones administradores y supervisores -->
                         <div class="mt-3">
+                            <a href="{{ route('inicio') }}" class="btn btn-dark w-100 mb-3 text-start">Estadísticas</a>
                             <a href="{{ route('listarRestricciones') }}" class="btn btn-dark w-100 mb-3 text-start">Restricciones</a>
                             <a href="#" class="btn btn-dark w-100 mb-3 text-start">Descargar métricas</a>
                         </div>
@@ -136,7 +134,6 @@
 </body>
 
 <!-- Scripts: Laravel app + Bootstrap bundle -->
-<script src="{{ asset('js/app.js') }}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 @stack('scripts')

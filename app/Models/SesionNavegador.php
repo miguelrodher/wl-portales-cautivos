@@ -21,11 +21,11 @@ class SesionNavegador extends Model
         'version_sistema_operativo',
         'navegador',
         'version_navegador',
-        'motor_navegador',
         'idioma',
         'eventos_cierres_sesiones_id',
         'usuarios_id',
         'portales_cautivos_id',
+        'tipos_dispositivos_id',
     ];
 
     public function evento()
@@ -41,5 +41,10 @@ class SesionNavegador extends Model
     public function portal()
     {
         return $this->belongsTo(PortalCautivo::class, 'portales_cautivos_id');
+    }
+
+    public function tipo_dispositivo()
+    {
+        return $this->belongsTo(TipoDispositivo::class, 'tipos_dispositivos_id');
     }
 }

@@ -34,7 +34,6 @@ class LoginRequest extends FormRequest
             'correo_electronico' => ['required', 'min:5', 'max:150', 'email:rfc,dns'],
             'telefono' => ['required', 'size:10', 'regex:/^[0-9]+$/'],
             'acepta' => ['required', 'accepted'],
-            'usuarios_id' => ['required'],
             'portales_cautivos_id' => ['required'],
         ];
     }

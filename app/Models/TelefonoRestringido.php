@@ -15,4 +15,9 @@ class TelefonoRestringido extends Model
     [
         'restriccion',
     ];
+
+    public function sesiones(): HasMany
+    {
+        return $this->hasMany(SesionNavegador::class, 'tipos_dispositivos_id');
+    }
 }

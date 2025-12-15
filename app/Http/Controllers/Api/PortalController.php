@@ -13,6 +13,7 @@ use Carbon\Carbon;
 
 use App\Models\Usuario;
 use App\Models\SesionNavegador;
+use App\Models\TipoDispositivo;
 
 class PortalController extends Controller
 {
@@ -43,6 +44,23 @@ class PortalController extends Controller
         # Unir el array en una cadena separada por coma y espacio
         $lista_idiomas = implode(', ', $idiomas);
 
+
+        # Determinar el tipo de dispositivo de la conexion #
+        $tipo_dispositivo = 'Otro';
+
+            if ($agente->isTablet()) {
+                $tipo_dispositivo = 'Tablet';
+            } elseif ($agente->isMobile()) {
+                $tipo_dispositivo = 'Móvil';
+            } elseif ($agente->isDesktop()) {
+                $tipo_dispositivo = 'Escritorio';
+            } elseif ($agente->isRobot()) {
+                $tipo_dispositivo = 'Robot';
+            }
+
+        # obtener el id de los catalogos de la base de datos #
+        $tipos_dispositivos = TipoDispositivo::firstWhere('tipo_dispositivo', $tipo_dispositivo);
+
         # Mapeo de las columnas para la base de datos #
         $sesion = SesionNavegador::create
         ([
@@ -55,17 +73,16 @@ class PortalController extends Controller
             'version_sistema_operativo' => $agente->version($agente->platform()) ?: '',
             'navegador'                 => $agente->browser() ?: '',
             'version_navegador'         => $agente->version($agente->browser()) ?: '',
-            'motor_navegador'           => 'Unknown',
             'idioma'                    => $lista_idiomas ?? 'es',
             
             'usuarios_id'  => $usuario->id,
-            'portales_cautivos_id'      => $request->portales_cautivos_id 
+            'portales_cautivos_id'      => $request->portales_cautivos_id,
+            'tipos_dispositivos_id' => $tipos_dispositivos->id,
         ]);
         
         return response()->json([
             'status' => 'success',
-            'message' => 'Usuario validado, acceso permitido',
-            'idiomas' => $agente->languages()
+            'message' => 'Usuario validado, acceso permitido'
         ], 200);
     }
 }

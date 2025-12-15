@@ -9,6 +9,9 @@ use App\Models\CorreoDominioRestringido;
 use App\Models\NombreRestringido;
 use App\Models\TelefonoRestringido;
 
+#Consultas a la base de datos #
+use App\Services\EstadisticasService;
+
 class AdministradorController extends Controller
 {    
     public function __construct()
@@ -17,9 +20,52 @@ class AdministradorController extends Controller
         $this->middleware('estatus');
     }
 
-    public function inicio()
+    public function inicio(EstadisticasService $estadisticas, Request $request)
     {
-        return view('administradores.index');
+        $estadisticas_generales = $estadisticas->estadisticasGenerales();
+        $estadisticas_administradores = null;
+
+        if(Auth::id() == 1)
+        {
+            $estadisticas_administradores = $estadisticas->estadisticasAdministradores();
+        }
+    
+
+
+        $portales_por_sesiones = $estadisticas->portalesPorSesiones();
+
+        $unidad_tiempo_seleccionada = $request->input('unidad_tiempo', 'month');
+
+        $estadisticas_sesiones_fechas = $estadisticas->estadisticasSEsionesFechas($unidad_tiempo_seleccionada);
+
+
+
+        $criterio_seleccionado = $request->input('criterio', 'navegador');
+
+        $estadisticas_criterios = $estadisticas->criteriosMasUsados($criterio_seleccionado);
+
+
+        $estadisticas_tipos_usuarios = $estadisticas->tiposDispositivosMasUsados();
+
+
+        if ($request->ajax()) 
+        {
+            return response()->json([
+                'estadisticas_sesiones_fechas' => $estadisticas_sesiones_fechas,
+                'estadisticas_criterios' => $estadisticas_criterios
+            ]);
+        }
+
+        return view('administradores.index', compact(
+            'estadisticas_generales', 
+            'estadisticas_administradores',
+            'unidad_tiempo_seleccionada',
+            'portales_por_sesiones',
+            'estadisticas_sesiones_fechas', 
+            'estadisticas_criterios', 
+            'criterio_seleccionado', 
+            'estadisticas_tipos_usuarios'
+        ));
     }
 
     public function listarRestricciones()
