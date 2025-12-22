@@ -88,4 +88,45 @@ class EstadisticasService
         );
     }
 
+
+    # Consultas de datos que solo se usan para las metricas exportadas en los reportes #
+
+    public function dominiosMasUsados()
+    {
+        return DB::select
+        (
+            "SELECT split_part(correo_electronico, '@', 2) AS dominio,
+                COUNT(*) AS numero_usuarios
+                FROM usuarios
+                GROUP BY dominio
+            ORDER BY numero_usuarios DESC;"
+        );
+    }
+
+    public function sesionesPromedio(string $unidad_tiempo)
+    {
+        $unidad_tiempo_bd = $unidad_tiempo;
+
+        return DB::select
+        (
+            "SELECT DATE_TRUNC('$unidad_tiempo_bd', NOW())::DATE AS periodo,
+                COUNT(*)/COUNT(DISTINCT (DATE_TRUNC('$unidad_tiempo_bd', created_at))) AS promedio_sesiones,
+                COUNT(DISTINCT(sesiones_navegadores.usuarios_id))/COUNT(DISTINCT (DATE_TRUNC('$unidad_tiempo_bd', created_at))) AS promedio_usuarios
+                FROM sesiones_navegadores
+                WHERE created_at > '1990-01-01';"
+        );
+    }
+
+    public function nuevosRegistros(string $unidad_tiempo)
+    {
+        $unidad_tiempo_bd = $unidad_tiempo;
+
+        return DB::select
+        (
+            "SELECT COUNT(*) AS numero_registros,
+                DATE_TRUNC('$unidad_tiempo_bd', NOW())::DATE AS periodo
+                FROM sesiones_navegadores
+                WHERE created_at > DATE_TRUNC('$unidad_tiempo_bd', NOW());"
+        );
+    }
 }

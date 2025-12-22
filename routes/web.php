@@ -26,6 +26,7 @@ Route::get('/portal/inicio', 'PortalController@inicioPortal')->name('inicioPorta
 # Rutas básicas de Auth #
 require __DIR__.'/auth.php';
 
+
 /*
 |--------------------------------------------------------------------------
 | Rutas privadas administradores
@@ -63,6 +64,7 @@ Route::get('/wl/editar-restriccion-telefono/{telefonos_restricciones_id}', 'Tele
 Route::post('/wl/editar-restriccion-telefono/{telefonos_restricciones_id}', 'TelefonoRestringidoController@editarRestriccionTelefonoPost')->name('editarRestriccionTelefonoPost');
 Route::post('/wl/eliminar-restriccion-telefono/{telefonos_restricciones_id}', 'TelefonoRestringidoController@eliminarRestriccionTelefonoPost')->name('eliminarRestriccionTelefonoPost');
 
+
 /*
 |--------------------------------------------------------------------------
 | Rutas de supervisor (super usuario)
@@ -84,3 +86,12 @@ Route::post('/wl/supervisor/eliminar-administrador/{cuentas_administrativas_id}'
 # Cambiar el estatus del usuario #
 Route::post('/wl/supervisor/cambiar-estatus-administrador/{cuentas_administrativas_id}', 'SupervisorController@cambiarEstatusAdministradorPost')->name('cambiarEstatusAdministradorPost');
 
+
+/*
+|--------------------------------------------------------------------------
+| Ruta para los informes estadisticos
+|--------------------------------------------------------------------------
+*/
+
+Route::get('wl/generar-reporte-pdf', 'ReporteController@generarReportePdf')->name('generarReportePdf');
+Route::get('wl/generar-reporte-excel', 'ReporteController@generarReporteExcel')->name('generarReporteExcel');

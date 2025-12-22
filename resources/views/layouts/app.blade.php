@@ -89,9 +89,9 @@
                                     aria-labelledby="headingAnaliticas" data-bs-parent="#sidebarAccordion">
                                     <div class="accordion-body p-0">
                                         <div class="list-group list-group-flush ps-5">
-                                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Visitas por día</a>
-                                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Tasa de conversión</a>
-                                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Sesiones por dispositivo</a>
+                                            <a href="{{ route('inicio') }}" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Estadísticas</a>
+                                            <a href="{{ route('generarReportePdf') }}" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Descargar reporte PDF</a>
+                                            <a href="{{ route('generarReporteExcel') }}" class="list-group-item list-group-item-action bg-dark text-white border-0 px-0">Descargar reporte Excel</a>
                                         </div>
                                     </div>
                                 </div>
